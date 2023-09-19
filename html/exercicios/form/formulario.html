@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario</title>
+    <style>
+        input,
+        textarea,
+        select,
+        label{
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bolder;
+        }
+        input[type=radio],
+        input[type=checkbox]{
+            display: inline;
+        }
+        div{
+            font-weight: bolder;
+        }
+        select{
+            font-weight: bolder;
+        }
+    </style>
+</head>
+<body>
+    <h1>Formulário</h1>
+    <form method="post">
+        <input type="hidden" name="id" value="3">
+
+        <label for="nome">Nome</label>
+        <input type="text" name="nome" id="nome">
+
+        <label for="email">e-mail</label>
+        <input type="email" name="email" id="email">
+
+        <label for="senha">Senha</label>
+        <input type="password" name="senha" id="senha">
+
+        <label for="bio">biografia</label>
+        <textarea name="bio" id="bio" cols="30" rows="10"></textarea>
+
+        <div>
+            <input type="radio" name="tipo" value="admin">Admin
+            <input type="radio" name="tipo" value="regular">Regular
+            <input type="radio" name="tipo" value="professor">Professor
+        </div>
+        <div>
+            <input type="checkbox" name="ativo">ativo
+        </div>
+        <select name="estado">
+            <option>selecione o estado</option>
+            <option value="ac">Acre</option>
+            <option value="ba">Bahia</option>
+            <option value="ce">Ceara</option>
+        </select>
+        <select name="interesses" multiple size="7">
+            <option value="js">Javascript</option>
+            <option value="java">Java</option>
+            <option value="python">Python</option>
+            <option value="php">PHP</option>
+            <option value="go">Go</option>
+            <option value="c">C</option>
+        </select>
+        <button formaction="http://localhost:3003/usuario">Incluir</button>
+        <button formaction="http://localhost:3003/usuario/3">Alterar</button>
+    </form>
+</body>
+</html>

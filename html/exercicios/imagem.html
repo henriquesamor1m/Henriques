@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Imagens</title>
+    <style>
+        .circular{
+            max-width: 513px;
+            background-color: #444;
+
+        }
+        .texto{
+            width: 400px;
+        }
+        .texto img{
+            margin-left: 10px;
+        }
+        .cidade{
+            width:513px;
+            height:342px;
+            background-image: url(https://images8.alphacoders.com/563/thumbbig-563765.webp);
+            background-position:center;
+            background-repeat:no-repeat;
+            background-size:100%;
+        }
+        p{
+            position: absolute;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div slider>
+        <p>
+            <img src="https://images6.alphacoders.com/127/1272533.jpg" alt="Muro de uma cidade"
+            width="513" height="342"
+            title="GOD OF WAR RAGNAROK">
+        </p>
+        <p>
+            <img src="https://media.giphy.com/media/FRNBTMwqNyTRGqyriW/giphy-downsized-large.gif" alt="gif"
+            height="342">
+        </p>
+        <p>
+            <img src="https://imgs.search.brave.com/E0ELqiih2OuYragcE5BC7OzvruuCyVncNcY3uSMk-fU/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9wb3J0/YWwudWZ2am0uZWR1/LmJyL2EtdW5pdmVy/c2lkYWRlL2N1cnNv/cy9ncmFkZV9jdXJy/aWN1bGFyX2NrYW4v/bG9hZGluZy5naWYv/QEBpbWFnZXMvaW1h/Z2UuZ2lm.gif" alt="gif"
+            height="342">
+        </p>
+        <p class="circular">
+            <img src="http://files.cod3r.com.br/curso-web/imagem3.png" alt="teste1" 
+            height="342">
+        </p>
+        <p class="texto">
+            <img src="https://images3.alphacoders.com/131/1319293.jpeg" alt="fazendo um pequeno teste" height="50" align="left">
+            isso é uma frase de testo em imagem hgcacuifjewfhekjfbwjkfwhjkweabfiaewhfewfew
+            fwfkwhvjbewjfhejfefeaftyhtrbrhtr
+            bghrtyjyb nvkjvrngibjfirjdrnff
+            fpotgitnfirt
+            fdhernrfuhrfjkrjfditrmgutnfijnfr
+            fehrighruihienlwhisrfr
+            frijhigitgiohkfsfiokgr
+            bvjrhjef
+        </p>
+        <p class="cidade">
+            <p>
+                <picture>
+                    <source srcset="http://files.cod3r.com.br/curso-web/logo-larga.png"
+                    media="(min-widht: 600px)">
+                    <img src="http://files.cod3r.com.br/curso-web/logo-estreita.png" alt="logo">
+                </picture>
+            </p>
+        </p>
+    </div>
+    <script>
+        function mover(elem,inicio,fim,mov,callback){
+            const novoinc=inicio-mov
+            if(novoinc>=fim){
+                elem.style.left=novoinc+'px'
+                setTimeout(()=> mover(elem ,novoinc,fim,mov,callback),7)
+            }else{
+                callback()
+            }
+        }
+        /*const movimentos= document.querySelector('[slider] > p')
+        movimentos.style.display= 'block'
+        mover(movimentos, 1500, -520, 5, () =>{
+            console.log('terminou !!')
+        })*/
+        function slider(){
+        const elementos= document.querySelectorAll('[slider] >p')
+        const slides= Array.from(elementos)
+        exbirslides(slides, slides[0])
+        }
+
+        function exbirslides(slides, slide){
+            slide.style.display= 'block'
+
+            const inicio= innerWidth
+            const fim= -slide.clientWidth
+
+            slide.style.left= `${inicio}px`
+
+            mover(slide, inicio, fim, 5,()=>{
+                exbirslides(slides, getproximo(slides,slide))
+                slide.style.display= 'none'
+            })
+        }
+        function getproximo(lista, atual){
+            const i= lista.indexOf(atual)+1
+            return i< lista.length ? lista[i]:lista[0]
+        }
+
+        slider()
+    </script>
+</body>
+</html>
